@@ -7,9 +7,7 @@ if (isset($_SESSION["guesses"]))
 else  {
     $_SESSION["guesses"] = 1 ;
 }
-$number = $_POST["guessnumber"];
-$submitbutton = $_POST["submit"];
-$randomnummber = mt_rand(1,4);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,16 +23,30 @@ $randomnummber = mt_rand(1,4);
     <h2>Made by Ahmed Khalaf</h2>
     <br>
     <br>
-    <input type="text" name="guessnumber" size="30">
+    <input type="text" name="guess_number" size="30">
     <br>
     <br>
-    <input type="submit" name="submit" value="try">
+    <input type="submit" name="submitbutton" value="try">
     <br>
     <br>
     </p>
     </form>
     <?php
-if ($submitbutton) {
+
+
+if (isset($_POST['guess_number'])) {
+    $number = $_POST['guess_number'];
+}
+if (isset($_POST['submit'])) {
+    $submitbutton = $_POST['submit'];
+}
+
+//$number = $_POST["guessnumber"];
+//$submitbutton = $_POST["submit"];
+$randomnummber = mt_rand(1,4);
+
+
+//if ($submitbutton) {
     if(($number > 11) && ($number < 99)){
         if ($number != $randomnummber){
             echo "Icecold, try agian!";
@@ -50,9 +62,8 @@ if (($number > 7) && ($number < 12)) {
             echo "Warm, try agian!";
             }
         }
-        if ($number == $randomnummber)
+        if ($number == $randomnummber){
             echo "$randomnummber is the correct guess!";
-
 
     }
  echo "<br/>";
